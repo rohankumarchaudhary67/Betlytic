@@ -6,7 +6,7 @@ export default function Home() {
 <>
       <div className="pt-20">
         <EventBarUI />
-        <div className="md:px-16 pt-4">
+        <div className="md:px-6 pt-4 xl:px-72">
           <EventShowcaseUI />
         </div>
       </div>

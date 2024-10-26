@@ -14,7 +14,7 @@ export default function EventBarUI() {
     return (
         <>
             <div className="border-b w-full h-10 flex justify-start items-center pt-2">
-                <div className="md:px-16 flex justify-start items-center space-x-4">
+                <div className="md:px-6 xl:px-72 flex justify-start items-center space-x-4">
                     {events.map((event, index) => (
                         <div key={index} className={`px-4 pb-3 cursor-pointer ${type==event && "font-semibold border-b border-primary"}`} onClick={()=>{handleChangeType(event)}}>
                             {event}

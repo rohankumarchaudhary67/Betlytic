@@ -12,7 +12,7 @@ export default function EventShowcaseUI() {
                     <EventCardUI />
                     <EventCardUI />
                 </div>
-                <div className="flex justify-start items-start flex-col md:w-96 p-4">
+                <div className="flex justify-start items-start flex-col md:hidden xl:flex p-4">
                     <h1 className="font-bold text-xl">Disclaimer</h1>
                     <h1>This game may be habit-forming or financially risky. Play Responsibly.</h1>
                 </div>

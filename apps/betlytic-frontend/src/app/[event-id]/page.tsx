@@ -17,7 +17,7 @@ export default function EventDetail() {
 
     return (
         <>
-            <div className="md:p-24">
+            <div className="md:py-24 md:px-12 xl:px-96">
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>

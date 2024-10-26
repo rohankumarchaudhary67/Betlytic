@@ -1,10 +1,38 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+'use client'
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import Image from "next/image"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 
 export default function EventDetailUI() {
+
+    const [price, setPrice] = useState(0);
+    const [quantity, setQuantity] = useState(0);
+
+    const values = (type: any , func: any) => {
+        if(type=="price"){
+            if(func=="inc"){
+                if(price<9){
+                    setPrice(price+1);
+                }
+            } else{
+                if(price>0){
+                    setPrice(price - 1);
+                }
+            }
+        }else{
+            if(func=="inc"){
+                setQuantity(quantity+1);
+            }else{
+                if(quantity>0){
+                    setQuantity(quantity-1);
+                }
+            }
+        }
+    }
+
     return (
         <>
             <div className="flex justify-between items-start space-x-6 w-full py-6">
@@ -22,7 +50,7 @@ export default function EventDetailUI() {
                                 About the event
                             </CardHeader>
                             <CardContent>
-                                <div className="flex justify-between items-center">
+                                <div className="flex justify-between items-center w-fit space-x-10">
                                     <div className="flex flex-col justify-start items-start">
                                         <span className="font-bold">Source of Truth</span>
                                         <span className="text-muted-foreground">Cricbuzz</span>
@@ -66,9 +94,9 @@ export default function EventDetailUI() {
                                 </div>
 
                                 <div className="border p-2 px-3 rounded-lg flex justify-center items-center space-x-4">
-                                    <img src="/icons/minus.png" className="h-3" alt="" />
-                                    <span className="font-bold">₹3.0</span>
-                                    <img src="/icons/plus.png" className="h-3" alt="" />
+                                    <img src="/icons/minus.png" className={`h-3 cursor-pointer ${price==0 && "opacity-25"}`} alt="" onClick={()=>{values("price", "dec")}} />
+                                    <span className="font-bold">₹{price}.0</span>
+                                    <img src="/icons/plus.png" className={`h-3 cursor-pointer ${price==9 && "opacity-25"}`} alt="" onClick={()=>{values("price", "inc")}} />
                                 </div>
                             </div>
 
@@ -76,9 +104,9 @@ export default function EventDetailUI() {
                                 <span className="font-bold">Quantity</span>
 
                                 <div className="border p-2 px-3 rounded-lg flex justify-center items-center space-x-4">
-                                    <img src="/icons/minus.png" className="h-3" alt="" />
-                                    <span className="font-bold">₹3.0</span>
-                                    <img src="/icons/plus.png" className="h-3" alt="" />
+                                    <img src="/icons/minus.png" className={`h-3 cursor-pointer ${quantity==0 && "opacity-25"}`} alt="" onClick={()=>{values("quantity", "dec")}} />
+                                    <span className="font-bold">{quantity}</span>
+                                    <img src="/icons/plus.png" className={`h-3 cursor-pointer ${quantity==50 && "opacity-25"}`} alt="" onClick={()=>{values("quantity", "inc")}} />
                                 </div>
                             </div>
 
